@@ -1,0 +1,9 @@
+#banner {
+    background-image: url("/assets/images/burger.png");
+}
+
+
+#laBurger{
+	margin-bottom: 10px;
+	color: red;
+}

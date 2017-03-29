@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  type="text/css"/>
+		<title>Eat Da Burger!</title>
+	</head>
+	<body class="text-center">
+			
+			<div class="jumbotron" id="banner">
+			
+<!--  <img src="/assets/images/burger.png" alt="">  -->
+  <form action="/burgers/create" method="POST">
+	
+	  <h1 id="laBurger">Eat Da Burger</h1>
+
+<div>
+ <textarea rows="4" cols="30" name="bname" placeholder="Enter Burger Name Here">
+</textarea> 
+</div>
+	<input class="btn btn-primary btn-lg" type="submit"></input>
+	
+
+</form>
+</div>
+
+		{{{ body }}}
+	</body>
+</html>
