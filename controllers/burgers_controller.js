@@ -36,12 +36,25 @@ router.post("/create", function(req, res){
 router.put("/delete/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-  db.Burger.delete(condition, function() {
-    res.redirect("/");
+ db.Burger.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function() {
+    res.redirect('/');
   });
 });
-
-
+/*
+router.get('/delete/:noteid', function(req, res) {
+  db.Fieldnote.destroy({
+    where: {
+      id: req.params.noteid
+    }
+  }).then(function() {
+    res.redirect('/notes/viewall');
+  });
+});
+*/
 // Export routes for server.js to use.
 module.exports = router;
 
