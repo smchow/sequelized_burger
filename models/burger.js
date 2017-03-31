@@ -10,12 +10,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     devoured: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: false
     },
-    order_date: {
+    /*order_date: {
        type: DataTypes.DATE,
       allowNull: false,
-    },
+      defaultValue: now()
+    },*/
 
 
   }, {

@@ -16,11 +16,19 @@ router.get("/", function(req, res) {
 
 
 router.post("/create", function(req, res){
-	 res.send(req.body);
+	// res.send(req.body);
     
-
-	/*db.Burger.create(['bname'], [req.body.bname], function(response){
-		res.redirect('/');
+   console.log(req.body.bname)
+   db.Burger.create(req.body).then(function() {
+        console.log("created a burger")
+            res.redirect( '/');
+            //res.send(req.body);
+    }).catch(function(err) {
+        console.log(err);
+        res.json(err);
+    }); 
+/*	db.Burger.create(['bname','devoured'], [req.body.bname,0], function(response){
+		//res.redirect('/');
 	});*/
 })
 
