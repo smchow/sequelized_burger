@@ -1,34 +1,29 @@
-// Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
 
-var burger = {
-  allAndJoin: function(tableTwo, tableOneJoinId, tableTwoJoinId, cb) {
-    orm.allAndJoin("burgers", tableTwo, tableOneJoinId, tableTwoJoinId, function(res){
-      cb(res);
-    });
-  },
-  all: function(cb) {
-    orm.all("burgers", function(res) {
-      cb(res);
-    });
-  },
-  // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("burgers", cols, vals, function(res) {
-      cb(res);
-    });
-  },
-  update: function(objColVals, condition, cb) {
-    orm.update("burgers", objColVals, condition, function(res) {
-      cb(res);
-    });
-  },
-  delete: function(condition, cb) {
-    orm.delete("burgers", condition, function(res) {
-      cb(res);
-    });
-  }
+
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define("Burger", {
+  
+    bname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique:true
+    },
+    devoured: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    order_date: {
+       type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+
+  }, {
+    // Creating a custom method for our User model. This will check if an unhashed password entered by
+    // The user can be compared to the hashed password stored in our database
+  
+  });
+
+  return Burger;
+
 };
-
-// Export the database functions for the controller (burgersController.js).
-module.exports = burger;

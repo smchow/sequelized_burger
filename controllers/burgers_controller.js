@@ -1,10 +1,13 @@
 var express = require("express");
 var router = express.Router();
-var burger = require("../models/burger.js");
+//var burger = require("../models/burger.js");
+
+var db = require("../models");
+var mysql = require('mysql');
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-	burger.all(function(data){
+	db.Burger.findAll({}).then(function(data) {
 		console.log(data);
 		res.render('burgers/index', {burgers: data});
 	});
@@ -13,20 +16,19 @@ router.get("/", function(req, res) {
 
 
 router.post("/create", function(req, res){
-	// res.send(req.body);
+	 res.send(req.body);
     
-    
-    
-	burger.create(['bname'], [req.body.bname], function(response){
+
+	/*db.Burger.create(['bname'], [req.body.bname], function(response){
 		res.redirect('/');
-	});
+	});*/
 })
 
 
 router.put("/delete/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-  burger.delete(condition, function() {
+  db.Burger.delete(condition, function() {
     res.redirect("/");
   });
 });
